@@ -1,5 +1,11 @@
 package io.khasang.ba.controller;
 
+import io.khasang.ba.Message;
+import io.khasang.ba.config.service.BasicOperationDB;
+import io.khasang.ba.config.service.MyService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -7,10 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AppController {
+    @Autowired
+    private Message message;
+
+    @Autowired
+    private BasicOperationDB basicOperationDB;
+
+    @Autowired
+    @Qualifier("main")
+    private MyService myService;
 
     @RequestMapping("/")
     public String getHelloPage(Model model){
-        model.addAttribute("name", "first Spring application!");
+        model.addAttribute("name", myService.getName());
         return "home";
     }
 
@@ -18,5 +33,23 @@ public class AppController {
     public String getName(@PathVariable("name") String name,  Model model){
         model.addAttribute("name", name);
         return "hello";
+    }
+
+    @RequestMapping("/basic-op/create")
+    public String createTable(Model model){
+        model.addAttribute("status", basicOperationDB.getTableCreationStatus());
+        return "create";
+    }
+
+    @RequestMapping("/basic-op/select")
+    public String selectTable(Model model){
+        model.addAttribute("status", basicOperationDB.getTableSelectStatus());
+        return "select";
+    }
+
+    @RequestMapping("/basic-op/insert")
+    public String insertTable(Model model){
+        model.addAttribute("status", basicOperationDB.getTableInsertStatus());
+        return "insert";
     }
 }
