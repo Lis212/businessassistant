@@ -15,6 +15,7 @@
         <jstl.version>1.2</jstl.version>
         <hibernate.version>5.3.6.Final</hibernate.version>
         <postgresql.version>42.2.5</postgresql.version>
+        <spring.security.version>4.2.8.RELEASE</spring.security.version>
     </properties>
 
     <dependencies>
@@ -45,6 +46,22 @@
             <version>${spring.version}</version>
         </dependency>
 
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
 
         <!-- Hibernate -->
         <dependency>
