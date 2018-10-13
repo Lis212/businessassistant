@@ -1,11 +1,10 @@
 package io.khasang.ba.controller;
 
 import io.khasang.ba.Message;
-import io.khasang.ba.config.service.BasicOperationDB;
-import io.khasang.ba.config.service.MyService;
+import io.khasang.ba.service.BasicOperationDB;
+import io.khasang.ba.service.MyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -42,7 +41,7 @@ public class AppController {
     @RequestMapping("/basic-op/create")
     public String createTable(Model model) {
         model.addAttribute("status", basicOperationDB.getTableCreationStatus());
-        return "create";
+        return "add";
     }
 
     @RequestMapping("/basic-op/select")

@@ -1,4 +1,4 @@
-package io.khasang.ba.config.service;
+package io.khasang.ba.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -11,17 +11,17 @@ public class BasicOperationDB {
 
     public String getTableCreationStatus(){
         try {
-            jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS public.cats\n" +
+            jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS public.foxex\n" +
                     "(\n" +
                     "    id integer NOT NULL,\n" +
                     "    name character varying(255) COLLATE pg_catalog.\"default\",\n" +
                     "    description character varying(255) COLLATE pg_catalog.\"default\",\n" +
                     "    color_id integer,\n" +
-                    "    CONSTRAINT cats_pkey PRIMARY KEY (id)\n" +
+                    "    CONSTRAINT foxex_pkey PRIMARY KEY (id)\n" +
                     ")");
-            jdbcTemplate.execute("select c.name from cats c where c.color_id = " +
+            jdbcTemplate.execute("select f.name from foxex f where f.color_id = " +
                     "(select id from colors cl where cl.name = 'smoke');");
-            return "Complete create";
+            return "Complete add";
         } catch (Exception e){
             return  "No complete " + e;
         }
@@ -29,7 +29,7 @@ public class BasicOperationDB {
 
     public String getTableSelectStatus(){
         try {
-            jdbcTemplate.execute("select c.name from cats c where c.color_id = " +
+            jdbcTemplate.execute("select f.name from foxex f where f.color_id = " +
                     "(select id from colors cl where cl.name = 'smoke');");
             return "Complete select";
         } catch (Exception e){
@@ -39,7 +39,7 @@ public class BasicOperationDB {
 
     public String getTableInsertStatus(){
         try {
-            jdbcTemplate.execute("insert into cats as c (id, name, description, color_id) " +
+            jdbcTemplate.execute("insert into foxex as f (id, name, description, color_id) " +
                     "values (1, 'Barsik', 'happy', 1)");
             return "Complete insert";
         } catch (Exception e){

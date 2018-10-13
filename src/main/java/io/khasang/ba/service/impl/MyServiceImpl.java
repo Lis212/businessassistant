@@ -1,6 +1,6 @@
-package io.khasang.ba.config.service.impl;
+package io.khasang.ba.service.impl;
 
-import io.khasang.ba.config.service.MyService;
+import io.khasang.ba.service.MyService;
 import org.springframework.stereotype.Component;
 
 @Component

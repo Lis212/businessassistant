@@ -1,4 +1,4 @@
-package io.khasang.ba.config.service;
+package io.khasang.ba.service;
 
 public interface MyService {
 
