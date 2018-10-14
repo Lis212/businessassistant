@@ -31,6 +31,11 @@ public class AppController {
         return "home";
     }
 
+    @RequestMapping("/foxinfo")
+    public String getFoxInfoPage(){
+        return "fox";
+    }
+
     @RequestMapping("/name/{name}")
     public String getName(@PathVariable("name") String name, Model model) {
         model.addAttribute("name", name);
